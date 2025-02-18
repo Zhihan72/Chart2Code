@@ -1,0 +1,93 @@
+agent:
+  name: GPT4EvaluationAgent
+  prompt_path: ${PROJECT_PATH}/chart2code/prompts/GPT4EvaluationAgent/gpt-4-vision-preview.json
+
+llm:
+  gpt-4-vision-preview:
+      name: gpt
+      engine: gpt-4-vision-preview
+      context_length: 4096
+      max_tokens: 4096
+      temperature: 0.0
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: []
+  gpt-4o:
+      name: gpt
+      engine: gpt-4o
+      context_length: 4096
+      max_tokens: 4096
+      temperature: 0.0
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: []
+  gpt-4o-mini:
+      name: gpt
+      engine: gpt-4o-mini
+      context_length: 4096
+      max_tokens: 4096
+      temperature: 0.0
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: []
+  gemini-pro-vision:
+      name: gemini
+      engine: gemini-pro-vision
+      max_tokens: 4096
+      context_length: 8192
+      temperature: 0.1
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: []
+  deepseekvl:
+      name: deepseekvl
+      engine: ${PROJECT_PATH}/models/deepseek-vl-7b-chat
+      context_length: 4096
+      max_tokens: 4096
+      temperature: 0.1
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: []
+  qwenvl:
+      name: qwenvl
+      engine: ${PROJECT_PATH}/models/Qwen-VL-Chat
+      context_length: 4096
+      max_tokens: 4096
+      temperature: 0.1
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: []
+  internvl:
+      name: internvl
+      engine: ${PROJECT_PATH}/models/InternVL-Chat-V1-5
+      context_length: 4096
+      max_tokens: 4096
+      temperature: 0.1
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: []
+  idefics2:
+      name: idefics2
+      engine: ${PROJECT_PATH}/models/idefics2-8b
+      context_length: 4096
+      max_tokens: 4096
+      temperature: 0.1
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: []
+run:
+  gpt4evaluation_batch:
+    name: gpt4evaluation_batch
+    original_dataset_dir: ./Evaluation/dataset/DATASET_NM/images/ori
+    generated_dataset_dir: ${SAVE_PATH}/DATASET_NM
+    template_type: direct
+    num_processes: 20
+    result_dir: ${SAVE_PATH}/DATASET_NM
