@@ -12,12 +12,12 @@ Throughout this process, our dual scoring method, which evaluates both the textu
 
 # Installation
 
-Taking LLaVA-v1.6-Mistral-7B for example, this build process based on LLaVA: 
+Taking LLaVA-v1.6-Mistral-7B for example, this build process based on [LLaVA](https://github.com/haotian-liu/LLaVA): 
 
 1. Clone this respository and move it to our ```./Training``` folder.
 
 ```
-git clone https://github.com/haotian-liu/LLaVA
+git clone https://github.com/haotian-liu/LLaVA.git
 mv LLaVA ./Training
 ```
 2. Install Package
@@ -32,7 +32,7 @@ pip install trl
 pip install -e ".[train]"
 pip install flash-attn --no-build-isolation
 ```
-4. Modify the TRL library adjust DPO for LVLMs
+4. Modify the TRL library adjust DPO for LLaVA
 ```
 cd *your conda path*/envs/csr/lib/python3.10/site-packages/trl/trainer/
 # Replace dop_trainer.py with dop_trainer.py in the 'Training/dpo_llava_trainer.py' folder.
@@ -51,14 +51,48 @@ cd ./LLaVA/llava/train
 ```
 
 <details>
-<summary>InternVL</summary>
+<summary>InternVL2.5-2B</summary>
 
-This build process based on LLaVA:
+This build process based on [InternVL](https://github.com/OpenGVLab/InternVL):
+
+1. Clone this respository and move it to our ```./Training``` folder.
+
+```
+git clone https://github.com/OpenGVLab/InternVL.git
+mv InternVL ./Training
+```
+2. Install Package
+```
+cd ./Training/InternVL
+conda create -n internvl python=3.10 -y
+conda activate internvl
+```
+3. Install additional packages for training cases
+```
+pip install -e ".requirements/internvl_chat.txt"
+```
+</details>
+
+<details>
+<summary>Qwen2-VL-7B</summary>
+
+This build process based on [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory):
 
 1. Clone this respository and navigate to LLaVA folder
 
 ```
-   puts "Hello World"
+git clone https://github.com/hiyouga/LLaMA-Factory.git
+mv LLaMA-Factory ./Training/Qwen
+```
+2. Install Package
+```
+cd ./Training/Qwen
+conda create -n qwen python=3.10 -y
+conda activate qwen
+```
+3. Install additional packages for training cases
+```
+pip install -e "requirementst.txt"
 ```
 
 </details>
