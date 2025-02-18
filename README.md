@@ -14,10 +14,40 @@ Throughout this process, our dual scoring method, which evaluates both the textu
 
 Taking LLaVA-v1.6-Mistral-7B for example, this build process based on LLaVA: 
 
-1. Clone this respository and navigate to LLaVA folder
+1. Clone this respository and move it to our ```./Training``` folder.
 
 ```
-   puts "Hello World"
+git clone https://github.com/haotian-liu/LLaVA
+mv LLaVA ./Training
+```
+2. Install Package
+```
+cd ./Training/LLaVA
+conda create -n llava python=3.10 -y
+conda activate llava
+pip install trl
+```
+3. Install additional packages for training cases
+```
+pip install -e ".[train]"
+pip install flash-attn --no-build-isolation
+```
+4. Modify the TRL library adjust DPO for LVLMs
+```
+cd *your conda path*/envs/csr/lib/python3.10/site-packages/trl/trainer/
+# Replace dop_trainer.py with dop_trainer.py in the 'Training/dpo_llava_trainer.py' folder.
+```
+5. Modify the parent class of llava_trainer
+```
+cd ./LLaVA/llava/train
+
+# Modify llava_trainer.py as follows:
+
+# from trl import DPOTrainer
+# ...
+# ...
+# ...
+# class LLaVATrainer(DPOTrainer):
 ```
 
 <details>
