@@ -1,0 +1,22 @@
+import matplotlib.pyplot as plt
+
+atlantic_depths = [2300, 2450, 2600, 2750, 2900, 3100, 3250, 3400, 3500, 3700]
+pacific_depths = [3000, 3150, 3300, 3500, 3750, 4000, 4100, 4250, 4400, 4500]
+indian_depths = [1500, 1600, 1700, 1850, 1950, 2100, 2250, 2350, 2450, 2550]
+
+data = [atlantic_depths, pacific_depths, indian_depths]
+
+fig, ax = plt.subplots(figsize=(10, 6))
+
+boxplot = ax.boxplot(data, vert=True, patch_artist=True, notch=True)
+
+colors = ['#ff7f0e', '#d62728', '#1f77b4']
+for patch, color in zip(boxplot['boxes'], colors):
+    patch.set_facecolor(color)
+    patch.set_alpha(0.7)
+
+plt.setp(boxplot['whiskers'], color='black', linestyle='--')
+plt.setp(boxplot['caps'], color='black')
+plt.setp(boxplot['medians'], color='black', linewidth=2)
+
+plt.show()

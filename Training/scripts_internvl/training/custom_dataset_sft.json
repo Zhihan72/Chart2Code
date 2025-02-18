@@ -1,0 +1,9 @@
+{
+  "sft_dataset": {
+    "root": "./Training/training_data/reachqa_train/",
+    "annotation": "./Training/training_data/reachqa_train/chart2code_reachqa_train_internvl.jsonl",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 102025
+  }
+}

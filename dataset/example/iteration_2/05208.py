@@ -1,0 +1,61 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Backstory: The pie chart here represents the distribution of favorite ice cream flavors among a group of kids in a summer camp.
+
+# Data for the pie chart
+flavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Mint', 'Cookie Dough', 'Rocky Road', 'Pistachio']
+percentages = [30, 25, 15, 10, 10, 5, 5]  # Percentage shares
+
+# Colors for each ice cream flavor
+colors = ['#f3e5ab', '#7b3f00', '#ff69b4', '#98fb98', '#d2b48c', '#bc8f8f', '#93c572']
+
+# Optionally explode the most favorite segment (Vanilla) for emphasis
+explode = (0.1, 0, 0, 0, 0, 0, 0)
+
+# Create the pie chart
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# Plotting the pie chart
+wedges, texts, autotexts = ax.pie(
+    percentages, 
+    labels=flavors, 
+    autopct='%1.1f%%', 
+    startangle=140, 
+    colors=colors, 
+    explode=explode, 
+    shadow=True
+)
+
+# Enhance text properties
+for text in texts:
+    text.set_fontsize(12)
+for autotext in autotexts:
+    autotext.set_fontsize(11)
+    autotext.set_color('black')
+
+# Set the chart title
+ax.set_title(
+    'Favorite Ice Cream Flavors Among Kids in Summer Camp', 
+    fontsize=16, 
+    fontweight='bold', 
+    pad=30
+)
+
+# Ensure the pie chart is a perfect circle
+ax.axis('equal')
+
+# Place the legend outside the pie chart
+plt.legend(
+    wedges, flavors,
+    title="Ice Cream Flavors",
+    loc="center left",
+    bbox_to_anchor=(1, 0, 0.5, 1),
+    fontsize=12
+)
+
+# Automatically adjust layout
+plt.tight_layout()
+
+# Show the plot
+plt.show()

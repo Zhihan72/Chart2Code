@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+years = np.arange(2010, 2021)
+solar_capacity = np.array([50, 60, 75, 95, 110, 130, 150, 180, 210, 240, 280])
+
+plt.figure(figsize=(12, 6))
+
+shuffled_colors = ['green', 'blue', 'red', 'purple', 'black'] # You can expand this list if needed
+
+plt.plot(years, solar_capacity, marker='o', linestyle='-', color=shuffled_colors[0], label='Solar Energy', linewidth=2)
+
+for i, (x, y) in enumerate(zip(years, solar_capacity)):
+    plt.annotate(f'{y} MW', (x, y), textcoords="offset points", xytext=(-10,10), ha='center', fontsize=9, color=shuffled_colors[0])
+
+plt.title('Renewable Energy Adoption in EcoVille\n(2010-2020)', fontsize=16, fontweight='bold', pad=20)
+plt.xlabel('Year', fontsize=12)
+plt.ylabel('Installed Capacity (MW)', fontsize=12)
+
+plt.legend(loc='upper left', frameon=False)
+plt.grid(True, linestyle='--', alpha=0.5)
+
+plt.axvline(x=2015, color='gray', linestyle=':', linewidth=1)
+plt.text(2015, max(solar_capacity) + 20, 'Paris Agreement', ha='center', color='gray')
+
+plt.tight_layout()
+
+plt.show()

@@ -1,0 +1,50 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from math import pi
+
+# Backstory
+# We are analyzing the attributes of different fruits based on their nutritional value
+# The categories considered are Vitamins, Minerals, Proteins, Fibers, Sugars, and Calories
+
+# Define categories
+categories = ['Vitamins', 'Minerals', 'Proteins', 'Fibers', 'Sugars', 'Calories']
+num_vars = len(categories)
+
+# Nutritional scores for each fruit (max score: 10)
+fruit_scores = {
+    'Apple': [7, 6, 2, 3, 5, 4],
+    'Orange': [8, 5, 2, 3, 6, 3],
+    'Banana': [6, 7, 3, 2, 4, 5],
+    'Strawberry': [9, 6, 2, 3, 4, 2],
+    'Pineapple': [7, 5, 2, 3, 6, 4]
+}
+
+# Create a radar chart
+fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(polar=True))
+
+# Compute angle for each category
+angles = np.linspace(0, 2 * pi, num_vars, endpoint=False).tolist()
+angles += angles[:1]  # Complete the loop
+
+# Add data to the plot
+colors = ['#FF6347', '#FFD700', '#32CD32', '#FF1493', '#FFA500']
+for idx, (fruit, scores) in enumerate(fruit_scores.items()):
+    scores += scores[:1]  # Close the loop
+    ax.plot(angles, scores, linewidth=2, linestyle='solid', label=fruit, color=colors[idx])
+    ax.fill(angles, scores, alpha=0.25, color=colors[idx])
+
+# Add labels and title
+plt.xticks(angles[:-1], categories, color='grey', size=12)
+ax.set_rlabel_position(30)
+plt.yticks([2, 4, 6, 8, 10], ["2", "4", "6", "8", "10"], color="grey", size=10)
+plt.ylim(0, 10)
+
+# Add a legend and title
+plt.legend(loc='upper right', bbox_to_anchor=(1.2, 1.1), fontsize=12)
+plt.title('Comparative Nutritional Analysis of Fruits', size=20, color='darkred', ha='center')
+
+# Automatically adjust layout to prevent overlap
+plt.tight_layout()
+
+# Display the plot
+plt.show()

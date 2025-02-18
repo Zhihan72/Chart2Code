@@ -1,0 +1,50 @@
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+sectors = ["Res", "Com", "Ind", "Pub Trans", "Misc"]
+energy_usage = [30, 25, 15, 20, 10]
+
+colors = ['#FF66B3', '#66B3FF', '#FFCC99', '#99FF99', '#FF9999']
+hatches = ['\\', '+', '/', '-', '|']
+
+explode = (0, 0, 0, 0.1, 0)
+
+fig, ax = plt.subplots(figsize=(12, 8), subplot_kw=dict(aspect="equal"))
+
+wedges, texts, autotexts = ax.pie(
+    energy_usage,
+    explode=explode,
+    labels=sectors,
+    colors=colors,
+    autopct='%1.1f%%',
+    shadow=True,
+    startangle=90,
+    pctdistance=0.85,
+    wedgeprops=dict(width=0.3)
+)
+
+for wedge, hatch in zip(wedges, hatches):
+    wedge.set_hatch(hatch)
+
+for text in texts:
+    text.set_fontsize(10)
+    text.set_color('blue')
+
+for autotext in autotexts:
+    autotext.set_fontsize(10)
+    autotext.set_color('white')
+    autotext.set_weight('bold')
+
+patches = [mpatches.Patch(facecolor=color, hatch=hatch, label=sector)
+           for color, hatch, sector in zip(colors, hatches, sectors)]
+ax.legend(handles=patches, loc='upper right', fontsize=10, title="Sec", frameon=True)
+
+ax.set_title(
+    'Sol Ene Usage: 2050',
+    fontsize=14, fontweight='normal', va='bottom', color='darkred'
+)
+
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()

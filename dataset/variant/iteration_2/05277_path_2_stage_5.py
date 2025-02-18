@@ -1,0 +1,43 @@
+import matplotlib.pyplot as plt
+import networkx as nx
+
+cities = ["Elvenwood", "Stromgarde", "Dragon's Keep", "Moonshade", "Blackrock", "Stonehaven", "Rivendell"]
+
+connections = [
+    ("Stromgarde", "Moonshade", 150),
+    ("Dragon's Keep", "Rivendell", 120),
+    ("Moonshade", "Blackrock", 180),
+    ("Stonehaven", "Dragon's Keep", 100),
+    ("Rivendell", "Elvenwood", 130),
+    ("Blackrock", "Stonehaven", 110),
+    ("Elvenwood", "Moonshade", 90),
+    ("Stromgarde", "Dragon's Keep", 140),
+    ("Moonshade", "Rivendell", 160),
+    ("Dragon's Keep", "Blackrock", 200),
+    ("Elvenwood", "Blackrock", 170),
+    ("Rivendell", "Stonehaven", 110)
+]
+
+G = nx.Graph()
+G.add_nodes_from(cities)
+
+for source, dest, frequency in connections:
+    G.add_edge(source, dest, weight=frequency)
+
+message_frequencies = {city: sum(d['weight'] for u, v, d in G.edges(city, data=True)) for city in cities}
+node_sizes = [500 + message_frequencies[city] * 2 for city in cities]
+
+pos = nx.spring_layout(G, k=0.5, seed=42)
+edge_widths = [1 + G[u][v]['weight'] / 50 for u, v in G.edges]
+
+node_color = 'skyblue'
+
+plt.figure(figsize=(12, 10))
+nx.draw_networkx_nodes(G, pos, node_size=node_sizes, node_color=node_color, alpha=0.9, edgecolors='black')
+nx.draw_networkx_edges(G, pos, edgelist=G.edges, edge_color='black', width=edge_widths)
+nx.draw_networkx_labels(G, pos, font_size=10, font_weight='bold')
+
+plt.axis('off')
+plt.tight_layout()
+
+plt.show()

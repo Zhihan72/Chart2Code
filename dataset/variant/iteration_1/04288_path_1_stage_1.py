@@ -1,0 +1,62 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the years for the dataset
+years = np.arange(2010, 2021)
+
+# Define cumulative CO2 emissions (in million metric tons) over the years for three regions
+north_america_co2 = [5500, 5400, 5300, 5200, 5100, 5000, 4900, 4800, 4700, 4650, 4600]
+europe_co2 = [3500, 3450, 3400, 3350, 3300, 3250, 3200, 3150, 3100, 3050, 3000]
+asia_co2 = [10000, 10400, 10800, 11200, 11600, 12000, 12200, 12400, 12600, 12900, 13200]
+
+# Define renewable energy adoption rates (%) over the years for the same regions
+north_america_renew = [10, 12, 15, 17, 20, 22, 24, 28, 30, 32, 35]
+europe_renew = [15, 18, 20, 23, 25, 28, 30, 33, 36, 38, 40]
+asia_renew = [5, 6, 8, 10, 12, 15, 18, 20, 22, 25, 28]
+
+# Create subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 8))
+
+# Plot for CO2 emissions
+ax1.plot(years, north_america_co2, color='blue', marker='o', linestyle='-', linewidth=2)
+ax1.plot(years, europe_co2, color='green', marker='s', linestyle='--', linewidth=2)
+ax1.plot(years, asia_co2, color='red', marker='^', linestyle='-.', linewidth=2)
+
+# Mark important policies
+ax1.axvline(x=2015, color='grey', linestyle=':', linewidth=1)
+ax1.text(2015.5, 9000, 'Paris Agreement (2015)', fontsize=9, color='grey')
+
+# Set titles and labels for the CO2 emissions plot
+ax1.set_title("Impact of Climate Policy on CO2 Emissions (2010-2020)", fontsize=14, pad=20)
+ax1.set_xlabel("Year", fontsize=12)
+ax1.set_ylabel("CO2 Emissions (in million metric tons)", fontsize=12)
+ax1.set_xticks(years)
+ax1.spines['top'].set_linewidth(0)
+ax1.spines['right'].set_linewidth(0)
+
+# Annotate the North America data
+ax1.annotate('Steady decline', xy=(2019, 4650), xytext=(2016, 5000),
+             arrowprops=dict(facecolor='black', arrowstyle='->'), fontsize=10)
+
+# Plot for renewable energy adoption rates
+ax2.plot(years, north_america_renew, color='blue', marker='o', linestyle='-', linewidth=2)
+ax2.plot(years, europe_renew, color='green', marker='s', linestyle='--', linewidth=2)
+ax2.plot(years, asia_renew, color='red', marker='^', linestyle='-.', linewidth=2)
+
+# Set titles and labels for the renewable energy plot
+ax2.set_title("Renewable Energy Adoption Rates (2010-2020)", fontsize=14, pad=20)
+ax2.set_xlabel("Year", fontsize=12)
+ax2.set_ylabel("Renewable Energy Adoption (%)", fontsize=12)
+ax2.set_xticks(years)
+ax2.spines['top'].set_linewidth(0)
+ax2.spines['right'].set_linewidth(0)
+
+# Highlight the target year 2020 in the renewable energy plot
+ax2.axvline(x=2020, color='grey', linestyle=':', linewidth=1)
+ax2.text(2020.5, 25, '2020 Target Year', fontsize=9, color='grey')
+
+# Automatically adjust layout for clarity and fit
+plt.tight_layout()
+
+# Display the plot
+plt.show()

@@ -1,0 +1,53 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the categories representing efficiency metrics
+categories = ['Cost Efficiency', 'Environmental Impact', 'Feasibility', 'Energy Output', 'Technological Advancement']
+
+# Define the data for each renewable energy source
+solar_data = [7, 9, 8, 7, 8]
+wind_data = [6, 8, 9, 8, 7]
+hydro_data = [8, 8, 6, 9, 7]
+geothermal_data = [6, 7, 7, 8, 6]
+biomass_data = [7, 6, 6, 7, 7]
+
+# Convert categories to a numpy array and complete the circle by appending the first value to the end
+labels = np.array(categories)
+data_entries = {
+    'Solar Power': np.array(solar_data + [solar_data[0]]),
+    'Wind Power': np.array(wind_data + [wind_data[0]]),
+    'Hydro Power': np.array(hydro_data + [hydro_data[0]]),
+    'Geothermal Energy': np.array(geothermal_data + [geothermal_data[0]]),
+    'Biomass Energy': np.array(biomass_data + [biomass_data[0]])
+}
+
+# Compute angles for the radar chart
+angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False).tolist()
+angles += angles[:1]
+
+# Define colors for each renewable energy source
+colors = ['#FF6347', '#4682B4', '#32CD32', '#FFD700', '#9370DB']
+
+# Create radar chart
+fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(polar=True))
+
+# Plot each renewable energy source's efficiency profile
+for (name, data), color in zip(data_entries.items(), colors):
+    ax.fill(angles, data, color=color, alpha=0.25, label=name)
+    ax.plot(angles, data, color=color, linewidth=2)
+
+# Customize the radar chart
+ax.set_xticks(angles[:-1])  # Set x-ticks to exclude closing angle
+ax.set_xticklabels(labels, fontsize=12)
+ax.set_yticklabels([])  # No radial labels
+ax.set_ylim(0, 10)  # Ensure the same scale for all dimensions
+ax.set_title('Efficiency Assessment of Renewable Energy Sources\nA Comparative Study by Eco Consortium', size=15, weight='bold', pad=20)
+
+# Add legend to the chart
+ax.legend(loc='upper right', bbox_to_anchor=(1.25, 1.1), title="Energy Sources", frameon=False)
+
+# Automatically adjust layout
+plt.tight_layout()
+
+# Display radar chart
+plt.show()

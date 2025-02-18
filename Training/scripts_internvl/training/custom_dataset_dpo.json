@@ -1,0 +1,9 @@
+{
+  "dpo_dataset": {
+    "root": "./code_generator/dataset/examples/iteration_1/",
+    "annotation": "./preference_construction/dataset/your_preference_dataset",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 102025
+  }
+}

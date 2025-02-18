@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+years = np.arange(2020, 2051)
+
+exoplanet_surveys = [0, 10, 25, 50, 80, 130, 180, 240, 300, 360, 420, 490, 560, 640, 710, 790, 870, 960, 1050, 1150, 1250, 1350, 1460, 1570, 1680, 1800, 1920, 2050, 2180, 2310, 2450]
+black_hole_probes = [0, 5, 15, 35, 60, 90, 120, 150, 190, 230, 280, 330, 390, 450, 520, 600, 680, 770, 860, 950, 1040, 1140, 1250, 1360, 1480, 1610, 1740, 1880, 2020, 2170, 2330]
+nebula_studies = [0, 8, 20, 45, 75, 110, 150, 200, 260, 330, 410, 500, 600, 700, 810, 930, 1060, 1190, 1330, 1480, 1640, 1810, 1990, 2180, 2380, 2590, 2810, 3040, 3280, 3530, 3790]
+cosmic_radiation_monitoring = [0, 12, 30, 65, 105, 160, 220, 290, 370, 460, 560, 670, 790, 920, 1060, 1210, 1370, 1540, 1720, 1910, 2110, 2320, 2540, 2770, 3010, 3260, 3520, 3790, 4070, 4360, 4660]
+star_mapping_missions = [0, 7, 18, 40, 68, 100, 135, 175, 220, 270, 325, 385, 450, 520, 595, 675, 760, 850, 950, 1050, 1160, 1280, 1410, 1550, 1700, 1860, 2030, 2210, 2400, 2600, 2810]
+
+fig, ax = plt.subplots(figsize=(12, 7))
+
+# Randomly altered visual settings
+ax.stackplot(years, exoplanet_surveys, black_hole_probes, nebula_studies, cosmic_radiation_monitoring,
+             star_mapping_missions, labels=['Exoplanets', 'Black Holes', 'Nebulas', 'Cosmic Rad.', 'Star Mapping'],
+             colors=['#7f7f7f', '#9467bd', '#e377c2', '#17becf', '#bcbd22'], alpha=0.65)
+
+ax.set_title("Galactic Exploration (2020-2050)", fontsize=14, fontweight='light', pad=15)
+ax.set_xlabel("Year", fontsize=10)
+ax.set_ylabel("Cumulative Hours", fontsize=10)
+
+# Altering ticks and rotation
+ax.set_xticks(years[::3])
+ax.tick_params(axis='x', rotation=30)
+
+ax.legend(loc='lower right', title="Missions", fontsize=8)
+
+# Altering grid style
+ax.grid(True, linestyle='-', linewidth=0.75, alpha=0.5)
+
+plt.tight_layout()
+plt.show()

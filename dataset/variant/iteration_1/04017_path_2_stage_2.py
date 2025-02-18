@@ -1,0 +1,53 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+years = np.arange(2010, 2022)
+regions = ['North America', 'Europe', 'Asia']
+
+solar_projects = {
+    'North America': [5, 7, 9, 12, 15, 17, 20, 22, 24, 26, 29, 31],
+    'Europe': [8, 10, 12, 15, 17, 19, 22, 25, 27, 30, 32, 35],
+    'Asia': [10, 15, 20, 25, 28, 30, 32, 34, 36, 38, 40, 45]
+}
+
+wind_projects = {
+    'North America': [6, 8, 10, 14, 18, 20, 22, 24, 26, 28, 30, 32],
+    'Europe': [9, 11, 14, 16, 19, 21, 24, 27, 29, 31, 34, 36],
+    'Asia': [7, 9, 11, 16, 20, 22, 24, 26, 28, 30, 33, 36]
+}
+
+hydro_projects = {
+    'North America': [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    'Europe': [4, 5, 6, 8, 9, 11, 13, 14, 15, 16, 17, 18],
+    'Asia': [3, 6, 9, 11, 14, 15, 16, 18, 19, 21, 23, 25]
+}
+
+fig, ax = plt.subplots(3, 1, figsize=(14, 18))
+
+width = 0.2
+
+# Different styles for bars
+colors = ['teal', 'darkorange', 'mediumseagreen']
+marker_styles = ['o', '^', 's']
+line_styles = ['-', '--', '-.']
+
+for idx, region in enumerate(regions):
+    ax[idx].bar(years - width, solar_projects[region], width=width, color=colors[0], label='Solar', edgecolor='black', linestyle=line_styles[0])
+    ax[idx].bar(years, wind_projects[region], width=width, color=colors[1], label='Wind', edgecolor='black', linestyle=line_styles[1])
+    ax[idx].bar(years + width, hydro_projects[region], width=width, color=colors[2], label='Hydro', edgecolor='black', linestyle=line_styles[2])
+    
+    ax[idx].set_title(f'{region} - Green Energy Projects Initiated Over the Years', fontsize=14, fontweight='bold', pad=10, loc='left')
+    ax[idx].set_xlabel('Year', fontsize=12, style='italic')
+    ax[idx].set_ylabel('Number of Projects', fontsize=12, style='italic')
+    ax[idx].set_xticks(years)
+    ax[idx].set_xticklabels(years, rotation=45, fontsize=10)
+    
+    ax[idx].yaxis.grid(True, linestyle='--', color='gray', alpha=0.7)
+
+    ax[idx].legend(loc='upper left', fontsize=10)
+
+fig.suptitle('Evolution of Green Energy Initiatives (2010-2021)', fontsize=16, fontweight='bold', color='navy', y=0.92)
+
+plt.tight_layout(rect=[0, 0, 1, 0.96])
+
+plt.show()

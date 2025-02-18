@@ -1,0 +1,43 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define years and energy consumption data
+years = np.arange(2000, 2023)
+traditional_energy = np.array([120, 118, 115, 113, 110, 107, 104, 100, 97, 94, 91, 88, 85, 83, 80, 78, 76, 74, 72, 70, 67, 65, 60])
+solar_energy = np.array([0, 0, 0, 0, 0, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20, 25, 30, 35, 40, 50, 55, 60, 65])
+wind_energy = np.array([0, 0, 0, 0, 0, 0, 0, 1, 3, 5, 7, 10, 13, 18, 23, 30, 38, 47, 55, 60, 65, 70, 75])
+hydro_energy = np.array([10, 10, 11, 12, 13, 14, 15, 16, 18, 20, 22, 24, 26, 29, 32, 35, 38, 41, 44, 47, 50, 52, 55])
+
+# Plot setup
+plt.figure(figsize=(14, 8))
+
+# Plot the data with distinct colors
+plt.plot(years, traditional_energy, label='Traditional Energy', color='green', linestyle='-', linewidth=2)
+plt.plot(years, solar_energy, label='Solar Energy', color='orange', linestyle='--', linewidth=2)
+plt.plot(years, wind_energy, label='Wind Energy', color='blue', linestyle='-.', linewidth=2)
+plt.plot(years, hydro_energy, label='Hydro Energy', color='purple', linestyle=':', linewidth=2)
+
+# Title and labels
+plt.title('Energy Consumption Evolution (2000-2022)', fontsize=16)
+plt.xlabel('Year', fontsize=12)
+plt.ylabel('Energy Consumption (GWh)', fontsize=12)
+
+# Highlight Data Points with distinct colors
+plt.scatter(years, traditional_energy, color='green', s=50, edgecolors='black', alpha=0.7)
+plt.scatter(years, solar_energy, color='orange', s=50, edgecolors='black', alpha=0.7)
+plt.scatter(years, wind_energy, color='blue', s=50, edgecolors='black', alpha=0.7)
+plt.scatter(years, hydro_energy, color='purple', s=50, edgecolors='black', alpha=0.7)
+
+# Legend and Grid
+plt.legend(loc='upper right', fontsize=10, title='Energy Sources')
+plt.grid(True, linestyle='--', alpha=0.7)
+
+# Custom x-ticks for better visibility
+plt.xticks(np.arange(2000, 2023, 2), fontsize=10, rotation=45)
+plt.yticks(fontsize=10)
+
+# Adjust layout to prevent overlap
+plt.tight_layout()
+
+# Show the plot
+plt.show()

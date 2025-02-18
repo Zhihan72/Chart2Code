@@ -1,0 +1,29 @@
+{
+    "type": [
+        "Change the chart type to: {type_name}."
+    ],
+    "data": [
+        "Remove one or more data groups in the data table.",
+        "Randomly alter the content within certain data groups while preserving the original dimensional structure.",
+        "Incorporate additional made-up data series or groups into the dataset."
+    ],
+    "layout": [
+        "Modify the number of rows and columns in the subplot arrangement while maintaining the total number of subplots.",
+        "Switch the placement of specific subplots within the chart layout.",
+        "Randomly eliminate a subplot to simplify the overall visualization."
+    ],
+    "color": [
+        "Apply a single color consistently across all data groups.",
+        "Shuffle the assigned colors for each data group or type.",
+        "Generate and apply a new set of colors to replace the original ones."
+    ],
+    "text": [
+        "Remove the textual elements in the chart, including axis labels, group labels, and titles.",
+        "Shorten some textual elements, such as titles, axis labels, and group labels.",
+        "Randomly alter the textual elements in the chart, such as titles, axis labels, and group labels."
+    ],
+    "style": [
+        "Eliminate the stylistic elements, such as legends, grids, and borders.",
+        "Randomly alter the stylistic elements including legends, grids, borders, and marker types (e.g., point shapes, line styles)."
+    ]
+}

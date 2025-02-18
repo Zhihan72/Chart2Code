@@ -1,0 +1,45 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Data
+years = np.arange(2015, 2020)
+crops = ['Wheat', 'Corn', 'Barley', 'Soybeans']
+
+wheat_yield = [3.9, 3.5, 3.7, 4.0, 4.1]  # Randomly shuffled yields
+corn_yield = [7.3, 7.9, 8.0, 7.8, 7.0]   # Randomly shuffled yields
+barley_yield = [3.1, 2.5, 2.8, 2.7, 3.0]  # Randomly shuffled yields
+soybean_yield = [2.3, 2.0, 2.4, 2.1, 2.2]  # Randomly shuffled yields
+
+width = 0.2
+x = np.arange(len(years))
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+ax.bar(x - 1.5*width, wheat_yield, width, label='Wht', color='#FFD700', edgecolor='black')
+ax.bar(x - 0.5*width, corn_yield, width, label='Crn', color='#FF8C00', edgecolor='black')
+ax.bar(x + 0.5*width, barley_yield, width, label='Brl', color='#98FB98', edgecolor='black')
+ax.bar(x + 1.5*width, soybean_yield, width, label='Soy', color='#1E90FF', edgecolor='black')
+
+ax.set_title("Yields (2015-19)", fontsize=16, fontweight='bold', pad=20)
+ax.set_xlabel("Yr", fontsize=14)
+ax.set_ylabel("Yield (t/ha)", fontsize=14)
+
+ax.set_xticks(x)
+ax.set_xticklabels(years, rotation=45)
+
+ax.legend(title='Crops', loc='upper center', ncol=2, bbox_to_anchor=(0.5, 1.15), fontsize=10)
+
+ax.yaxis.grid(True, linestyle=':', alpha=0.5)
+
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_linestyle('dashed')
+
+# Annotations
+for i in range(len(years)):
+    heights = [wheat_yield[i], corn_yield[i], barley_yield[i], soybean_yield[i]]
+    for j, height in enumerate(heights):
+        ax.text(i - 1.5*width + j * width, height + 0.1, f'{height}', ha='center', va='bottom', color='black', fontsize=9)
+
+plt.tight_layout()
+plt.show()

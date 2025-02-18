@@ -1,0 +1,34 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Data without Digital Services
+food_delivery = np.array([3, 5, 7, 9, 12])
+online_retail = np.array([15, 25, 35, 45, 60])
+ecommerce_data = [food_delivery, online_retail]
+
+# Initialize the plot
+fig, ax1 = plt.subplots(figsize=(10, 6))
+
+# Create the boxplot
+boxprops_set = [
+    dict(facecolor='#ffcc00', color='black'),  
+    dict(facecolor='#ff6f69', color='black')   
+]
+
+bp = ax1.boxplot(ecommerce_data, vert=False, patch_artist=True,
+                 labels=['Food', 'Retail'],  # Shortened labels
+                 whiskerprops=dict(color='black'),
+                 capprops=dict(color='black'),
+                 medianprops=dict(color='red'))
+
+# Apply colors to each box
+for patch, color_props in zip(bp['boxes'], boxprops_set):
+    patch.set(**color_props)
+
+# Simplified titles and labels
+ax1.set_title("Growth (2019-23)", fontsize=16, fontweight='bold')  # Shortened title
+ax1.set_xlabel('Revenue (B$)', fontsize=14)  # Shortened xlabel
+ax1.set_ylabel('Type', fontsize=14)  # Shortened ylabel
+
+plt.tight_layout()
+plt.show()

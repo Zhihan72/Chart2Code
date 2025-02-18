@@ -1,0 +1,35 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+stages = ["Idea", "Proto", "Alpha", "Beta", "Intro", "Success"]
+projects = np.array([500, 300, 200, 100, 50, 30])
+
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# Use a single color for all elements
+uniform_color = 'skyblue'
+
+for i in range(len(stages)):
+    ax.text(0.5, i + 0.5, f"{stages[i]}\n{projects[i]}", 
+            ha='center', va='center', fontsize=12, color='black', weight='bold')
+
+ax.set_xlim(0, 1)
+ax.set_ylim(0, len(stages))
+ax.axis('off')
+ax.set_title('Startup Funnel: Idea to Success', fontsize=16, weight='bold', pad=30)
+plt.tight_layout()
+
+# Donut chart for idea categories
+categories = ['Soft', 'Hard', 'Serv', 'Hybrid']
+category_counts = [250, 150, 75, 25]
+
+fig2, ax2 = plt.subplots(figsize=(8, 8))
+
+# Apply single color for all pie sections
+ax2.pie(category_counts, labels=categories, colors=[uniform_color]*len(categories), autopct='%1.1f%%',
+        startangle=140, wedgeprops={'edgecolor': 'black', 'width': 0.3})
+
+ax2.set_title('Idea Categories', fontsize=16, weight='bold', pad=20)
+
+plt.tight_layout()
+plt.show()

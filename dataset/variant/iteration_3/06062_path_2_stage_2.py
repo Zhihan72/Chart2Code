@@ -1,0 +1,41 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+planets = ['Mercury', 'Venus', 'Earth', 'Moon', 'Mars', 'Europa', 'Titan']
+
+water_content_data = [
+    [0.1, 0.1, 0.2, 0.2, 0.1],          # Mercury
+    [0.0, 0.0, 0.1, 0.1, 0.0],          # Venus
+    [70.0, 68.0, 72.0, 71.0, 69.0],     # Earth
+    [0.1, 0.2, 0.1, 0.3, 0.2],          # Moon
+    [2.0, 2.1, 2.2, 2.0, 2.1],          # Mars
+    [52.5, 53.0, 52.0, 53.5, 52.3],     # Europa
+    [40.0, 41.0, 40.5, 41.5, 40.3]      # Titan
+]
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+# Plot the horizontal box plot
+box = ax.boxplot(water_content_data, patch_artist=True, notch=True, vert=False, labels=planets)
+
+colors = ['#ADFF2F', '#FF69B4', '#00CED1', '#D2691E', '#8A2BE2', '#FFD700', '#7FFF00']
+for patch, color in zip(box['boxes'], colors):
+    patch.set_facecolor(color)
+
+plt.setp(box['medians'], color='blue', linestyle='--', linewidth=2)
+
+ax.set_title("Astrobiology Research: Planetary Water Content", fontsize=18, fontweight='normal', pad=15)
+ax.set_xlabel("Water Content (%)", fontsize=14)
+ax.set_ylabel("Planets", fontsize=14)
+
+ax.grid(visible=True, linestyle='-', alpha=0.3, which='minor', linewidth=0.5)
+
+for i, planet in enumerate(planets):
+    max_val = max(water_content_data[i])
+    ax.text(max_val + 2, i + 1, f'Max: {max_val:.1f}%', va='center', fontsize=9, color=colors[i])
+
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+
+plt.tight_layout()
+plt.show()

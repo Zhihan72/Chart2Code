@@ -1,0 +1,53 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Original data
+years = np.arange(2012, 2022)
+startups_founded = [50, 55, 60, 85, 120, 135, 150, 170, 200, 220]
+
+# Additional data series for startups founded in another geographic region
+startups_founded_region2 = [30, 40, 50, 65, 80, 100, 120, 130, 150, 180]
+
+# Original data for line chart
+years_line = np.arange(2012, 2022)
+employees = [1000, 1100, 1050, 1300, 1400, 1600, 1750, 1800, 2100, 2300]
+
+# Additional made-up data series for another key metric: Revenue (in $1000s)
+revenue = [400, 500, 600, 850, 900, 1100, 1300, 1500, 1900, 2500]
+
+# Create the figure and two subplots
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10), gridspec_kw={'height_ratios': [3, 2]})
+
+# Bar chart with additional data series
+bars1 = ax1.bar(years - 0.2, startups_founded, width=0.4, label='Region 1', color=plt.cm.tab20c(0), edgecolor='black')
+bars2 = ax1.bar(years + 0.2, startups_founded_region2, width=0.4, label='Region 2', color=plt.cm.tab20c(4), edgecolor='black')
+
+# Customize the bar chart
+ax1.set_title('Growth of Tech Startups (2012-2021)', fontsize=18, weight='bold', loc='left', pad=20)
+ax1.set_xlabel('Year', fontsize=14)
+ax1.set_ylabel('Number of Startups Founded', fontsize=14)
+ax1.yaxis.grid(True, linestyle='--', alpha=0.7)
+ax1.set_xlim(2011, 2022)
+ax1.legend()
+
+# Annotate each bar with the number of startups
+for bar, value in zip(bars1 + bars2, startups_founded + startups_founded_region2):
+    ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 3, f'{value}', ha='center', va='bottom', fontsize=12)
+
+# Line chart with an additional data series
+ax2.plot(years_line, employees, marker='o', color='skyblue', markerfacecolor='blue', markersize=9, linewidth=3, label='Employees')
+ax2.plot(years_line, revenue, marker='s', color='orange', markerfacecolor='red', markersize=9, linewidth=3, linestyle='--', label='Revenue')
+
+# Customize the line chart
+ax2.set_title('Tech Industry Employment & Revenue', fontsize=18, weight='bold', loc='left', pad=20)
+ax2.set_xlabel('Year', fontsize=14)
+ax2.set_ylabel('Number of Employees / Revenue ($1000s)', fontsize=14)
+ax2.yaxis.grid(True, linestyle='--', alpha=0.7)
+ax2.set_xlim(2011, 2022)
+ax2.set_ylim(500, 2700)
+ax2.legend()
+
+# Adjust layout and display the plot
+fig.tight_layout(pad=3.0)
+fig.suptitle('Tech Startups, Employment, and Revenue Trends (2012-2021)', fontsize=20, weight='bold')
+plt.show()

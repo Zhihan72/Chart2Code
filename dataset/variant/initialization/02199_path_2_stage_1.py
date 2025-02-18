@@ -1,0 +1,46 @@
+import matplotlib.pyplot as plt
+
+energy_sources = [
+    'Solar - Photovoltaic', 'Solar - Thermal', 
+    'Wind - Onshore', 'Wind - Offshore', 
+    'Hydropower - Conventional', 'Hydropower - Pumped', 
+    'Biomass - Solid', 'Biomass - Liquid',
+    'Geothermal', 'Tidal', 'Wave', 'Others'
+]
+
+percentages = [15.5, 14.5, 13, 12, 10, 10, 7, 6, 5, 3, 2, 2]
+
+colors = [
+    '#FFD700', '#FFEC8B', 
+    '#87CEEB', '#4682B4', 
+    '#32CD32', '#228B22', 
+    '#D2691E', '#8B4513', 
+    '#FF6347', '#6495ED', 
+    '#1E90FF', '#B0C4DE'
+]
+
+explode = (0.1, 0, 0.1, 0, 0.1, 0, 0, 0, 0, 0, 0, 0)
+
+plt.figure(figsize=(12, 9))
+wedges, texts, autotexts = plt.pie(
+    percentages, labels=energy_sources, autopct='%1.1f%%', startangle=90,
+    colors=colors, explode=explode, wedgeprops={'edgecolor': 'black', 'width': 0.3}, shadow=True
+)
+
+for text in texts + autotexts:
+    text.set_fontsize(9)
+    text.set_color('black')
+for autotext in autotexts:
+    autotext.set_fontweight('bold')
+
+plt.title('Detailed Global Distribution of Renewable Energy Sources in 2023\nAnalyzed by Subcategories', fontsize=14, fontweight='bold', pad=20)
+
+plt.legend(
+    wedges, energy_sources, title="Energy Sources", loc='upper right', bbox_to_anchor=(1.2, 1),
+    fontsize=10, title_fontsize='11'
+)
+
+plt.axis('equal')
+plt.tight_layout(rect=[0, 0, 0.9, 1])
+
+plt.show()

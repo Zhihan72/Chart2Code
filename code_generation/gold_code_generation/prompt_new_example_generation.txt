@@ -1,0 +1,22 @@
+You are good at writing and editing codes for plotting charts. As a MatplotLib expert, you are asked to write a new Python plotting script. This script will be used to generate a type-specific chart with artificial data. Here are the requirements: 
+1. There are several script examples from which you can draw inspiration, but try not to repeat patterns already shown in the examples to maximize diversity. 
+2. Use the Matplotlib library in Python for plotting. You can use auxiliary libraries such as Numpy, but make sure the code works! 
+3. The type of chart you need to plot is {type}. Therefore, everything you create must be adapted to fit this type of chart. You may consider introducing more subplots with different type(s) in this chart.
+4. The topic of the chart can be anything you like. 
+5. Based on the given chart type and the topic you choose, you need to construct a suitable backstory, which should be reflected in the title, labels, legend, etc. 
+6. Based on the backstory, you need to construct contextual data inputs in the form of Python lists or Numpy arrays. Information contained in the data can be adapted as appropriate to fit the type of chart. 
+7. You must NOT use random() to construct the data, as it needs to be explicitly created regardless of your chart type and topic. 
+8. Be as imaginative and creative as possible in drawing the chart, both in terms of data and plotting details.
+
+Here are some examples to consider: 
+{example_1}
+{example_2}
+{example_3}
+
+Now, let’s take this task step by step. First, we have to plan out the title and backstory of the chart and create data based on the above. Then, think about how you would write the entire script.
+Remember:
+1. Avoid occlusion of visual elements. If necessary, automatically adjust the image layout before plt.show() using tight layout(). 
+2. Avoid overlapping of text in the chart. If the text is too long, break it into multiple lines, or change its position to avoid collapsing with other text.
+3. Double-check to ensure the code works. Reduce unnecessary comments and focus on functionality. 
+
+Output your code starting with “```python\n”.

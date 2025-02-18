@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the software tools and their cumulative active users over 10 years
+software_tools = ["Tool A", "Tool B", "Tool C", "Tool D", "Tool E"]
+cumulative_active_users = np.array([1890, 1225, 1200, 1425, 1350])
+
+# Sort the data in descending order
+sorted_indices = np.argsort(cumulative_active_users)[::-1]
+sorted_tools = [software_tools[i] for i in sorted_indices]
+sorted_active_users = cumulative_active_users[sorted_indices]
+
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.bar(sorted_tools, sorted_active_users, color='skyblue')
+
+# Set axis labels and title
+ax.set_xlabel('Software Tool', fontsize=12)
+ax.set_ylabel('Cumulative Active Users (in Thousands)', fontsize=12)
+ax.set_title('Cumulative Software Tool Usage (2015-2024)', fontsize=16, fontweight='bold')
+
+# Display the values on top of bars
+for i, v in enumerate(sorted_active_users):
+    ax.text(i, v + 20, str(v), ha='center', va='bottom', fontsize=10)
+
+plt.tight_layout()
+plt.show()

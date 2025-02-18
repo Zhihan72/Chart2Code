@@ -1,0 +1,42 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+years = np.arange(2020, 2031)
+solar_energy = np.array([7, 15, 22, 35, 60, 70, 95, 120, 155, 210, 250])
+wind_energy = np.array([10, 15, 30, 40, 60, 90, 105, 160, 180, 220, 260])
+hydro_energy = np.array([20, 15, 12, 20, 25, 35, 45, 50, 65, 90, 110])
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 8))
+
+axes[0].bar(years, solar_energy, label='Solar', color='#ff9999', alpha=0.85, edgecolor='grey')
+axes[0].bar(years, -wind_energy, label='Wind', color='#66b3ff', alpha=0.85, edgecolor='grey')
+axes[0].bar(years, hydro_energy, bottom=solar_energy, label='Hydro', color='#99ff99', alpha=0.85, edgecolor='grey')
+
+axes[0].set_title('Diverging Energy Chart 2020-30', fontsize=14)
+axes[0].set_xlabel('Year', fontsize=11)
+axes[0].set_ylabel('Energy (Growth/Decline)', fontsize=11)
+axes[0].set_xticks(years, labels=years, rotation=45)
+axes[0].grid(axis='y', linestyle='-.', linewidth=0.5, alpha=0.6)
+axes[0].legend(loc='lower right', fontsize=10, title='Type', title_fontsize='11')
+
+for i, (s, w, h) in enumerate(zip(solar_energy, wind_energy, hydro_energy)):
+    axes[0].text(years[i], s / 2, f'{s}', ha='center', va='center', color='black', fontsize=8)
+    axes[0].text(years[i], -w / 2, f'{w}', ha='center', va='center', color='black', fontsize=8)
+    axes[0].text(years[i], s + h / 2, f'{h}', ha='center', va='center', color='black', fontsize=8)
+
+total_renewable_energy = solar_energy + wind_energy + hydro_energy
+percentage_growth = np.zeros(len(total_renewable_energy))
+percentage_growth[1:] = ((total_renewable_energy[1:] - total_renewable_energy[:-1]) / total_renewable_energy[:-1]) * 100
+
+axes[1].plot(years, total_renewable_energy, label='Total', color='#ffa64d', marker='s', linewidth=2.5, linestyle='-.')
+axes[1].plot(years, percentage_growth, label='Growth %', color='#c45959', linestyle=':', marker='^', linewidth=1.5)
+axes[1].set_title('Total & Growth %', fontsize=14)
+axes[1].set_xlabel('Yr', fontsize=11)
+axes[1].set_ylabel('TWh / %', fontsize=11)
+axes[1].set_xticks(years, labels=years, rotation=45)
+axes[1].set_ylim(0, max(total_renewable_energy) * 1.2)
+axes[1].legend(loc='lower right', fontsize=10)
+axes[1].grid(True, linestyle='--', alpha=0.5)
+
+plt.tight_layout()
+plt.show()

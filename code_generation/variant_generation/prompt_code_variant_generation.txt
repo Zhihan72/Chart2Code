@@ -1,0 +1,15 @@
+You are good at writing and editing codes for plotting charts. As a MatplotLib expert, you are asked to change a Python plotting code in the following direction:
+{rule}
+
+Reference code:
+```python
+{code}
+```
+
+Now, let’s take this task step by step. First, please read the reference code carefully and analyze the chart it draws. Then, think about how you would change this code with the given direction.
+Remember:
+1. If the direction involves random changing or shuffling, you should manually change the corresponding content in the code, instead of creating or calling any function. random library is NOT allowed to use in the code.
+2. If the direction involves removing or eliminating, you should remove the corresponding content from the code. Any information that is not visualized in the chart is NOT allowed to be kept in the code.
+3. You should avoid redundant comments and focus on the functionality.
+
+Output your code starting with “Changed code:\n```python\n”, and give a few lines for detailed explanation.

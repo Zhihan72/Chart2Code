@@ -1,0 +1,58 @@
+import matplotlib.pyplot as plt
+
+class_a = [
+    [78, 82, 85, 83, 80, 75, 77, 85, 88, 82],
+    [83, 85, 75, 79, 77, 81, 80, 85, 86, 78],
+    [88, 85, 83, 87, 80, 79, 85, 89, 86, 84],
+    [82, 83, 79, 77, 81, 85, 82, 80, 86, 84]
+]
+
+class_b = [
+    [65, 70, 68, 72, 69, 67, 66, 71, 74, 69],
+    [70, 75, 72, 74, 70, 68, 73, 72, 71, 70],
+    [72, 74, 70, 78, 75, 72, 74, 77, 75, 76],
+    [68, 72, 74, 73, 70, 68, 71, 75, 77, 74]
+]
+
+class_c = [
+    [90, 92, 85, 88, 89, 85, 91, 87, 94, 90],
+    [88, 87, 85, 89, 92, 91, 90, 93, 87, 88],
+    [87, 85, 80, 85, 87, 90, 89, 91, 88, 87],
+    [89, 91, 88, 85, 87, 86, 90, 88, 91, 89]
+]
+
+class_d = [
+    [55, 60, 58, 62, 59, 57, 56, 61, 64, 59],
+    [60, 65, 62, 64, 60, 58, 63, 62, 61, 60],
+    [62, 64, 60, 68, 65, 62, 64, 67, 65, 66],
+    [58, 62, 64, 63, 60, 58, 61, 65, 67, 64]
+]
+
+data = class_a + class_b + class_c + class_d
+group_labels = ['A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'B4',
+                'C1', 'C2', 'C3', 'C4', 'D1', 'D2', 'D3', 'D4']
+
+fig, ax = plt.subplots(figsize=(16, 11))
+
+bplots = ax.boxplot(data, vert=False, patch_artist=True, notch=False,
+                    boxprops=dict(facecolor='lightyellow', color='blue', linewidth=1.5),
+                    whiskerprops=dict(color='blue', linewidth=1.5),
+                    capprops=dict(color='blue', linewidth=1.5),
+                    medianprops=dict(color='red', linewidth=1.5),
+                    flierprops=dict(marker='o', color='red', alpha=0.5))
+
+new_colors = ['lavender', 'mediumseagreen', 'lightskyblue', 'khaki']
+for i in range(0, 16, 4):
+    for patch in bplots['boxes'][i:i+4]:
+        patch.set_facecolor(new_colors[i // 4])
+
+ax.set_xlabel('Scores', fontsize=14)
+ax.set_yticklabels(group_labels, fontsize=12)
+
+ax.spines['top'].set_linewidth(0)
+ax.spines['right'].set_linewidth(0)
+ax.spines['left'].set_linewidth(0)
+ax.spines['bottom'].set_linewidth(0)
+
+plt.tight_layout()
+plt.show()

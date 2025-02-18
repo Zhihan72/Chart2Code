@@ -1,0 +1,219 @@
+{
+    "bar": {
+        "base": {
+            "name": "base bar chart (vertical, data in no specific order, unstacked)",
+            "related_type": [
+                "horizon",
+                "sort"
+            ]
+        },
+        "horizon": {
+            "name": "horizontal bar chart",
+            "related_type": [
+                "base",
+                "sort"
+            ]
+        },
+        "sort": {
+            "name": "sorted bar chart (data in ascending or descending sequence)",
+            "related_type": [
+                "base",
+                "horizon"
+            ]
+        },
+        "group": {
+            "name": "grouped bar chart (multiple positive data sets, adjacent)",
+            "related_type": [
+                "stack",
+                "diverging"
+            ]
+        },
+        "stack": {
+            "name": "stacked bar chart (multiple positive data sets laying atop one another)",
+            "related_type": [
+                "group",
+                "diverging"
+            ]
+        },
+        "diverging": {
+            "name": "diverging bar chart (multiple stacked data sets expanding from a central axis)",
+            "related_type": [
+                "group",
+                "stack"
+            ]
+        },
+        "3d": {
+            "name": "3D bar chart",
+            "related_type": [
+                "base",
+                "horizon",
+                "sort",
+                "group"
+            ]
+        }
+    },
+    "heatmap": {
+        "base": {
+            "name": "base heatmap chart (the general layout of a typical heatmap)",
+            "related_type": [
+                "triangle"
+            ]
+        },
+        "triangle": {
+            "name": "triangle heatmap chart (plotting only the upper/lower triangle of a heatmap)",
+            "related_type": [
+                "base"
+            ]
+        }
+    },
+    "scatter": {
+        "base": {
+            "name": "base scatter chart",
+            "related_type": []
+        }
+    },
+    "box": {
+        "base": {
+            "name": "base box chart (single group of data, complete box shape, vertical box)",
+            "related_type": [
+                "horizon"
+            ]
+        },
+        "horizon": {
+            "name": "horizontal box chart (horizontal box)",
+            "related_type": [
+                "base"
+            ]
+        },
+        "group": {
+            "name": "grouped box chart (multiple groups of data, complete box shape, vertical box)",
+            "related_type": [
+                "horizon"
+            ]
+        }
+    },
+    "violin": {
+        "base": {
+            "name": "base violin chart (standard shape, single data group)",
+            "related_type": [
+                "horizon"
+            ]
+        },
+        "horizon": {
+            "name": "horizontal violin chart (horizontal violin)",
+            "related_type": [
+                "base"
+            ]
+        }
+    },
+    "radar": {
+        "base": {
+            "name": "base radar chart (areas not filled)",
+            "related_type": [
+                "fill"
+            ]
+        },
+        "fill": {
+            "name": "fill-area radar chart (areas within the radar chart filled)",
+            "related_type": [
+                "base"
+            ]
+        }
+    },
+    "pie": {
+        "base": {
+            "name": "base pie chart (standard shape)",
+            "related_type": [
+                "donut"
+            ]
+        },
+        "donut": {
+            "name": "donut pie chart (like a ring)",
+            "related_type": [
+                "base"
+            ]
+        },
+        "layer": {
+            "name": "multi-layer pie chart (multiple series or categories)",
+            "related_type": [
+                "donut"
+            ]
+        }
+    },
+    "density": {
+        "base": {
+            "name": "base density chart (y-axis as density)",
+            "related_type": [
+                "horizon"
+            ]
+        },
+        "horizon": {
+            "name": "horizontal density chart (x-axis as density)",
+            "related_type": [
+                "base"
+            ]
+        },
+        "group": {
+            "name": "grouped density chart (multiple datasets)",
+            "related_type": [
+                "horizon"
+            ]
+        }
+    },
+    "graph": {
+        "base": {
+            "name": "directed graph chart (edges have direction)",
+            "related_type": [
+                "undirect"
+            ]
+        },
+        "undirect": {
+            "name": "undirected graph chart (edges have no direction)",
+            "related_type": [
+                "base"
+            ]
+        }
+    },
+    "histogram": {
+        "base": {
+            "name": "base histogram chart (single dataset with overlapping or stacking)",
+            "related_type": []
+        },
+        "overla": {
+            "name": "overlaid histogram chart (overlapping multiple datasets)",
+            "related_type": [
+                "stack"
+            ]
+        },
+        "stack": {
+            "name": "stacked histogram chart (stacked multiple datasets)",
+            "related_type": [
+                "overla"
+            ]
+        }
+    },
+    "treemap": {
+        "base": {
+            "name": "base treemap chart",
+            "related_type": []
+        }
+    },
+    "area": {
+        "base": {
+            "name": "base area chart",
+            "related_type": []
+        }
+    },
+    "line": {
+        "base": {
+            "name": "base chart",
+            "related_type": []
+        }
+    },
+    "funnel": {
+        "base": {
+            "name": "base funnel chart",
+            "related_type": []
+        }
+    }
+}

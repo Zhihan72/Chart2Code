@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+years = np.arange(2010, 2021)
+solar_energy = [130, 22, 265, 30, 45, 170, 15, 320, 68, 95, 215]
+wind_energy = [250, 95, 290, 80, 340, 105, 215, 160, 120, 145, 185]
+hydro_energy = [1025, 935, 900, 995, 1015, 950, 980, 920, 1035, 965, 1005]
+geothermal_energy = [11, 39, 21, 12, 33, 28, 14, 24, 16, 18, 10]
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+# Shuffled colors
+ax.plot(years, solar_energy, marker='o', linestyle='-', color='#8FBC8F', linewidth=2, label='Solar Energy')
+ax.plot(years, wind_energy, marker='s', linestyle='-', color='#FFA07A', linewidth=2, label='Wind Energy')
+ax.plot(years, hydro_energy, marker='^', linestyle='-', color='#FFD700', linewidth=2, label='Hydro Energy')
+ax.plot(years, geothermal_energy, marker='D', linestyle='-', color='#6495ED', linewidth=2, label='Geothermal Energy')
+
+plt.title('Trend of Power Generation from Renewable Energy Sources (2010 - 2020)', fontsize=16, fontweight='bold', pad=20)
+plt.xlabel('Year', fontsize=14)
+plt.ylabel('Power Generation Capacity (GW)', fontsize=14)
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.legend(title='Energy Sources', title_fontsize='13', fontsize='12', loc='upper left')
+
+ax.annotate('Significant Growth', xy=(2016, 18), xytext=(2013, 60),
+             arrowprops=dict(facecolor='black', shrink=0.05), fontsize=12, color='darkred')
+
+plt.text(2010, 320, "The rise in renewable energy adoption\nis driven by technological advancements\nand global environmental policies.",
+         fontsize=12, color='grey', bbox=dict(facecolor='white', alpha=0.5))
+
+plt.tight_layout()
+plt.show()

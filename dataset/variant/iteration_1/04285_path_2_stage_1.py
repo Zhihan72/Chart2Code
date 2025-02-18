@@ -1,0 +1,67 @@
+import matplotlib.pyplot as plt
+import networkx as nx
+
+governance_bodies = [
+    "Royal Court", "Military Council", "Merchant Guild", "Farmers' Union", "Mages' Council",
+    "Knights of Valor", "Thieves' Guild", "Artisan Guild", "Forest Rangers", "Sea Traders", "Clerics' Conclave"
+]
+
+interactions = [
+    ("Royal Court", "Military Council"),
+    ("Royal Court", "Merchant Guild"),
+    ("Military Council", "Knights of Valor"),
+    ("Military Council", "Thieves' Guild"),
+    ("Merchant Guild", "Sea Traders"),
+    ("Merchant Guild", "Artisan Guild"),
+    ("Farmers' Union", "Artisan Guild"),
+    ("Mages' Council", "Knights of Valor"),
+    ("Forest Rangers", "Farmers' Union"),
+    ("Thieves' Guild", "Artisan Guild"),
+    ("Clerics' Conclave", "Royal Court"),
+    ("Sea Traders", "Royal Court"),
+]
+
+node_categories = {
+    "Leadership": ["Royal Court", "Military Council", "Mages' Council"],
+    "Trade & Craftsmanship": ["Merchant Guild", "Sea Traders", "Artisan Guild"],
+    "Defense & Law": ["Knights of Valor", "Thieves' Guild", "Forest Rangers"],
+    "Civilians": ["Farmers' Union", "Clerics' Conclave"]
+}
+
+colors = {
+    "Leadership": 'royalblue',
+    "Trade & Craftsmanship": 'darkorange',
+    "Defense & Law": 'darkred',
+    "Civilians": 'forestgreen'
+}
+
+color_map = []
+for body in governance_bodies:
+    for category in node_categories:
+        if body in node_categories[category]:
+            color_map.append(colors[category])
+
+kingdom_graph = nx.Graph()
+kingdom_graph.add_nodes_from(governance_bodies)
+kingdom_graph.add_edges_from(interactions)
+
+pos = nx.spring_layout(kingdom_graph, seed=21)
+
+plt.figure(figsize=(15, 12))
+
+nx.draw_networkx_nodes(
+    kingdom_graph, pos, node_size=2000, node_color=color_map, edgecolors='black', linewidths=1.5, alpha=0.9
+)
+
+nx.draw_networkx_edges(
+    kingdom_graph, pos, width=2, alpha=0.7, edge_color='grey'
+)
+
+nx.draw_networkx_labels(
+    kingdom_graph, pos, font_size=12, font_weight='bold', font_color='white'
+)
+
+plt.axis('off')
+
+plt.tight_layout()
+plt.show()

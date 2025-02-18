@@ -1,0 +1,34 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define times of the day
+times = np.array(['08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00'])
+
+# Number of bands performing at the designated times 
+pop_bands = np.array([2, 3, 5, 7, 9, 10, 8, 6])
+rock_bands = np.array([1, 2, 4, 3, 6, 8, 7, 5])
+
+# Audience attendance at those times in hundreds
+audience_attendance = np.array([5, 8, 15, 25, 35, 45, 40, 30])
+
+# Setting up the figure with two subplots
+fig, axes = plt.subplots(2, 1, figsize=(12, 12), sharex=True)
+
+# Plotting number of bands performing over time
+axes[0].plot(times, pop_bands, '-o', color='magenta')
+axes[0].plot(times, rock_bands, '-s', color='blue')
+axes[0].grid(alpha=0.3, linestyle='--', linewidth=0.7)
+
+# Plotting audience attendance
+axes[1].plot(times, audience_attendance, '-D', color='orange')
+axes[1].grid(alpha=0.3, linestyle='--', linewidth=0.7)
+
+# Adjust x-axis labels to prevent overlap
+for ax in axes:
+    ax.tick_params(axis='x', rotation=45)
+
+# Optimize layout
+plt.tight_layout()
+
+# Display the plots
+plt.show()

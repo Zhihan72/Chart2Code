@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+energy_sources = ['Wind', 'Solar', 'Geothermal', 'Hydrogen', 'Fossil Fuels']
+energy_usage = np.array([15, 25, 10, 20, 10])
+
+single_color = '#4682B4'  # Steel Blue
+
+explode = (0, 0.1, 0.1, 0, 0)
+
+fig, ax = plt.subplots(figsize=(10, 7), subplot_kw=dict(aspect="equal"))
+
+wedges, texts, autotexts = ax.pie(
+    energy_usage,
+    labels=energy_sources,
+    autopct='%1.1f%%',
+    startangle=90,
+    colors=[single_color] * len(energy_sources),
+    explode=explode
+)
+
+plt.setp(autotexts, size=10, weight="bold", color='black')
+plt.setp(texts, size=10, weight='bold')
+
+plt.title(
+    'Intergalactic Power Landscape:\nExploration of Energy Utilization in the 22nd Century',
+    fontsize=16, weight='bold', pad=20
+)
+
+plt.tight_layout()
+plt.show()

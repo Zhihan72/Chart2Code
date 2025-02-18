@@ -1,0 +1,48 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Updated dataset with additional celestial bodies
+planets = ["Europa", "Mars", "Callisto", "Ganymede", "Venus", "Titan", "Ceres", "Moon", "Io", "Mercury"]
+funding_percentages = [15, 30, 3, 7, 5, 10, 2, 15, 8, 5]  # Adjusted percentages to total 100
+
+# New colors for the additional entries
+colors = ['#66b3ff','#ff9999','#ffb366','#c2c2f0','#ffcc99',
+          '#ff6666','#c2f0c2','#99ff99','#ffccff','#f0e68c']
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+# Pie chart with added planets
+wedges, texts, autotexts = ax.pie(funding_percentages, labels=planets, colors=colors,
+                                  autopct='%1.1f%%', startangle=90, textprops=dict(color="black"),
+                                  wedgeprops=dict(width=0.4))
+
+plt.setp(autotexts, size=12, weight="bold")
+plt.setp(texts, size=10, style='italic')
+
+ax.set_title('Exploration Initiatives\nFunding Allocation 2050', 
+             fontsize=16, fontweight='bold', color='green', pad=25)
+
+ax.legend(wedges, [f"{planet}: {percentage}%" for planet, percentage in zip(planets, funding_percentages)],
+          title="Planets", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), fontsize=10, title_fontsize=12)
+
+ax.set_aspect('equal')
+
+# Updated funding amounts matching the new percentages
+funding_amounts = [150, 300, 30, 70, 50, 100, 20, 150, 80, 50] 
+ax_bar = fig.add_subplot(212)
+x_pos = np.arange(len(planets))
+bars = ax_bar.bar(x_pos, funding_amounts, color=colors, edgecolor='black')
+
+ax_bar.set_title('Funding Amounts Comparisons\nExploration Targets (in Billions)', fontsize=14, weight='bold')
+ax_bar.set_xlabel('Targets', fontsize=12)
+ax_bar.set_ylabel('Funding (Billion $)', fontsize=12)
+ax_bar.set_xticks(x_pos)
+ax_bar.set_xticklabels(planets, rotation=45, ha='right', fontsize=11, style='italic')
+
+for bar in bars:
+    height = bar.get_height()
+    ax_bar.text(bar.get_x() + bar.get_width() / 2, height + 5, f"${height}B", ha='center', va='bottom', fontsize=10)
+
+plt.tight_layout()
+
+plt.show()
