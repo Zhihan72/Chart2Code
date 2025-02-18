@@ -101,6 +101,7 @@ pip install -e "requirementst.txt"
 
 ## Gold Code Generation
 
+The following parts will be updated soon. Thank you for your patience!
 
 ## Variant Generation
 
@@ -121,4 +122,4 @@ List scripts for evaluation
 
 # Acknowledgement
 
-The code is based on LLaVA-NeXT, InternVL, and llama-factory. Thanks for all these great works and open sourcing!
+The code is based on [LLaVA](https://github.com/haotian-liu/LLaVA), [InternVL](https://github.com/OpenGVLab/InternVL), and [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). We adapted part of the [ChartMimic](https://github.com/ChartMimic/ChartMimic)'s codebase in downstream evaluation and generating rewarding signals. We greatly appreciate all their contributions to the MLLM community.
