@@ -84,6 +84,18 @@ conda activate internvl
 ```
 pip install -e ".requirements/internvl_chat.txt"
 ```
+4. Prepare training and evaluation script.
+```
+mkdir ./Training/InternVL/scripts
+mv ./scripts_internvl/training/finetune_lora_sft.sh ./Training/InternVL/scripts
+mv ./scripts_internvl/training/finetune_lora_dpo.sh ./Training/InternVL/scripts
+mv ./scripts_internvl/training/custom_dataset_sft.json ./Training/InternVL/scripts
+mv ./scripts_internvl/training/custom_dataset_dpo.json ./Training/InternVL/scripts
+mkdir ./Training/InternVL/internvl_chart/eval/chart2code
+mv ./scripts_internvl/evaluation/evaluate_vqa.py ./Training/InternVL/internvl_chart/eval/chart2code
+mv ./scripts_internvl/evaluation/evaluate_vqa_chartqa.py ./Training/InternVL/internvl_chart/eval/chart2code
+mv ./scripts_internvl/evaluation/evaluation_sampling.sh ./Training/InternVL/scripts
+```
 </details>
 
 <details>
@@ -107,7 +119,16 @@ conda activate qwen
 ```
 pip install -e "requirementst.txt"
 ```
-
+4. Prepare training and evaluation script.
+```
+mkdir ./Training/Qwen/scripts
+mv ./scripts_qwen/training/finetune_lora_sft.sh ./Training/Qwen/scripts
+mv ./scripts_qwen/training/finetune_lora_dpo.sh ./Training/Qwen/scripts
+mv ./scripts_qwen/evaluation/evaluate_chart2code.py ./Training/Qwen/evaluate
+mkdir ./Training/Qwen/evaluate
+mv ./scripts_qwen/evaluation/evaluate_chartqa.py ./Training/Qwen/evaluate
+mv ./scripts_qwen/evaluation/evaluation_sampling.sh ./Training/Qwen/scripts
+```
 </details>
 
 # Dataset
