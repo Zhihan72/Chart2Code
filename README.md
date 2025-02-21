@@ -12,8 +12,11 @@ Throughout this process, our dual scoring method, which evaluates both the textu
 
 # Installation
 
-Taking LLaVA-v1.6-Mistral-7B for example, this build process based on [LLaVA](https://github.com/haotian-liu/LLaVA): 
+<details>
+<summary>LLaVA-v1.6-Mistral-7B</summary>
 
+This build process based on [LLaVA](https://github.com/haotian-liu/LLaVA):
+  
 1. Clone this respository and move it to our ```./Training``` folder.
 
 ```
@@ -35,7 +38,7 @@ pip install flash-attn --no-build-isolation
 4. Modify the TRL library adjust DPO for LLaVA
 ```
 cd *your conda path*/envs/csr/lib/python3.10/site-packages/trl/trainer/
-# Replace dop_trainer.py with dop_trainer.py in the 'Training/dpo_llava_trainer.py' folder.
+# Replace dop_trainer.py with dop_trainer.py in the 'Training/scripts_llava/dpo_llava_trainer.py' folder.
 ```
 5. Modify the parent class of llava_trainer
 ```
@@ -49,6 +52,16 @@ cd ./LLaVA/llava/train
 # ...
 # class LLaVATrainer(DPOTrainer):
 ```
+6. Prepare training and evaluation script.
+```
+mkdir ./Training/LLaVA/scripts
+mv ./scripts_llava/training/finetune_lora_sft.sh ./Training/LLaVA/scripts
+mv ./scripts_llava/training/finetune_lora_dpo.sh ./Training/LLaVA/scripts
+mv ./scripts_llava/evaluation/model_vqa_chart2code.py ./Training/LLaVA/llava/eval
+mv ./scripts_llava/evaluation/model_vqa_chart2qa.py ./Training/LLaVA/llava/eval
+mv ./scripts_llava/evaluation/evaluation_sampling.sh ./Training/LLaVA/scripts
+```
+</details>
 
 <details>
 <summary>InternVL2.5-2B</summary>
