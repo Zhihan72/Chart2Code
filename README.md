@@ -15,7 +15,7 @@ Throughout this process, our dual scoring method, which evaluates both the textu
 <details>
 <summary>LLaVA-v1.6-Mistral-7B</summary>
 
-This build process based on [LLaVA](https://github.com/haotian-liu/LLaVA):
+This build process is based on [LLaVA](https://github.com/haotian-liu/LLaVA):
   
 1. Clone this respository and move it to our ```./Training``` folder.
 
@@ -38,7 +38,7 @@ pip install flash-attn --no-build-isolation
 4. Modify the TRL library adjust DPO for LLaVA
 ```
 cd *your conda path*/envs/csr/lib/python3.10/site-packages/trl/trainer/
-# Replace dop_trainer.py with dop_trainer.py in the 'Training/scripts_llava/dpo_llava_trainer.py' folder.
+# Replace dop_trainer.py with dop_trainer.py in the 'Training/scripts_llava' folder.
 ```
 5. Modify the parent class of llava_trainer
 ```
@@ -66,7 +66,7 @@ mv ./scripts_llava/evaluation/evaluation_sampling.sh ./Training/LLaVA/scripts
 <details>
 <summary>InternVL2.5-2B</summary>
 
-This build process based on [InternVL](https://github.com/OpenGVLab/InternVL):
+This build process is based on [InternVL](https://github.com/OpenGVLab/InternVL):
 
 1. Clone this respository and move it to our ```./Training``` folder.
 
@@ -101,7 +101,7 @@ mv ./scripts_internvl/evaluation/evaluation_sampling.sh ./Training/InternVL/scri
 <details>
 <summary>Qwen2-VL-7B</summary>
 
-This build process based on [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory):
+This build process is based on [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory):
 
 1. Clone this respository and navigate to LLaVA folder
 
@@ -133,6 +133,8 @@ mv ./scripts_qwen/evaluation/evaluation_sampling.sh ./Training/Qwen/scripts
 
 # Dataset
 
+Find the plotting scrips of our dataset in ```./dataset``` folder. Plotting scripts in ```./dataset/example``` and ```./dataset/variant``` are gold codes and 
+
 ## Gold Code Generation
 
 The following parts will be updated soon. Thank you for your patience!
@@ -141,19 +143,16 @@ The following parts will be updated soon. Thank you for your patience!
 
 Variant Path Sampling
 
-
-# Experiment
-
-## Iterative Preference Training
+# Iterative Preference Training
 
 This dataset is built on xxx.
 
 List DPO training process.
 
-## Evaluation
+# Evaluation
 
 List scripts for evaluation
 
 # Acknowledgement
 
-The code is based on [LLaVA](https://github.com/haotian-liu/LLaVA), [InternVL](https://github.com/OpenGVLab/InternVL), and [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). We adapted part of the [ChartMimic](https://github.com/ChartMimic/ChartMimic)'s codebase in downstream evaluation and generating rewarding signals. We greatly appreciate all their contributions to the MLLM community.
+The code is based on [LLaVA](https://github.com/haotian-liu/LLaVA), [InternVL](https://github.com/OpenGVLab/InternVL), and [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). We adapted part of the [ChartMimic](https://github.com/ChartMimic/ChartMimic)'s codebase in generating rewarding signals and downstream evaluation. We greatly appreciate all their contributions to the MLLM community.
