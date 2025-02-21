@@ -1,6 +1,6 @@
-This repository releases the official data and code for the paper "Enhancing Chart-to-Code Generation in Multimodal Large Language Models via Iterative Dual Preference Learning". 
+This repository releases the official data and code for the paper "Enhancing Chart-to-Code Generation in Multimodal Large Language Models via Iterative Dual Preference Learning". More details of our project are on the way.
 
-This repository is used for double-blind reviewing process. ANYONE is NOT allowed to distribute our data and code at ANYTIME during the reviewing process.
+This repository is used for double-blind reviewing process. ANYONE is NOT allowed to distribute our data and code at ANYTIME during the reviewing process. 
 
 # About Chart2Code
 
@@ -133,25 +133,59 @@ mv ./scripts_qwen/evaluation/evaluation_sampling.sh ./Training/Qwen/scripts
 
 # Dataset
 
-Find the plotting scrips of our dataset in ```./dataset``` folder. Plotting scripts in ```./dataset/example``` and ```./dataset/variant``` are gold codes and 
+Find the plotting scrips of our dataset in ```./dataset``` folder. Plotting scripts in ```./dataset/example``` and ```./dataset/variant``` are gold codes and variants, respectively.
 
 ## Gold Code Generation
 
-The following parts will be updated soon. Thank you for your patience!
+Check ```./code_generation/gold_code_generation``` folder for codes and prompt templates.
+```
+python ./code_generation/gold_code_generation/generate_new_examples.py
+```
 
 ## Variant Generation
 
-Variant Path Sampling
+Check ```./code_generation/variant_generation``` folder for codes and prompt templates. The rules and chart types are saved in ```./code_generation/rule_and_dimension```.
+```
+python ./code_generation/variant_generation/generate_code_variants.py
+```
 
 # Iterative Preference Training
 
-This dataset is built on xxx.
+1. Collect model-generated codes 
+```
+python ./Training/${model_name}/scripts/evaluate_chart2code.py
+# Set the question file and image folder to the gold code at the current Iteration.
+```
+2. Collect reward signals
+If using our trained evaluator or GPT-4o, use the following script:
+```
+bash ./preference_construction/generate_score.sh
+```
+If using heuristic F1-based code scoring, use the codes contributed by [ChartMimic](https://github.com/ChartMimic/ChartMimic):
+```
+cd ./Evaluation/eval_metrcis
+git clone https://github.com/ChartMimic/ChartMimic.git
+mv ./Evaluation/eval_metrcis/ChartMimic/* ./Evaluation/eval_metrcis/chart2code 
+```
+4. Make preference datasets
+```
+python ./preference_construction/collect_score_metadata.py
+```
+5. Train the model with DPO loss function.
+```
+bash ./Training/${model_name}/scripts/finetune_lora_dpo.py
+# Set the question file and image folder to the variant code at the current Iteration.
+```
 
-List DPO training process.
+Note that ```model_name``` can be ```LLaVA```, ```Qwen```, or ```InternVL```. For ```InternVL```, the question file and image folder should be saved in ```./Training/InternVL/scripts/custom_dataset_dpo.json```. For ```Qwen```, they should be added in the ```./Training/Qwen/data/dataset_info.json```.
 
 # Evaluation
 
-List scripts for evaluation
+The inference codes for baselines can be found in ```./Evaluation/baselines```.
+
+Download the evaluation datasets into ```./Evaluation/datasets``` from [ChartMimic](https://github.com/ChartMimic/ChartMimic), [ReachQA](https://github.com/hewei2001/ReachQA), and [CharXiv](https://github.com/princeton-nlp/CharXiv).
+
+The implementations of evaluation metrics are the same as reward signal collection during iterative preference learning.
 
 # Acknowledgement
 
