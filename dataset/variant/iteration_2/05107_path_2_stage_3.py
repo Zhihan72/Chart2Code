@@ -1,0 +1,27 @@
+import matplotlib.pyplot as plt
+
+kids_data = [5, 7, 6, 4, 5, 6, 8, 9, 10, 7, 5, 6, 4, 6, 5, 7, 8, 11, 12]
+teens_data = [6, 8, 9, 7, 7, 6, 8, 10, 12, 11, 10, 9, 7, 9, 8, 10, 8, 13, 14]
+adults_data = [9, 10, 12, 11, 12, 14, 13, 12, 14, 15, 14, 13, 12, 14, 15, 17, 18, 19, 20]
+seniors_data = [8, 10, 9, 7, 8, 9, 11, 12, 10, 11, 9, 8, 7, 10, 9, 8, 10, 11, 12]
+
+data = [kids_data, teens_data, adults_data, seniors_data]
+
+plt.figure(figsize=(12, 7))
+
+box = plt.boxplot(data, patch_artist=True, notch=False, vert=True)  # Changed notch and vert parameters
+
+colors = ['#FF5733', '#FFC300', '#900C3F', '#C70039']  # Changed color order
+for patch, color in zip(box['boxes'], colors):
+    patch.set_facecolor(color)
+
+plt.setp(box['whiskers'], color='grey', linewidth=1)  # Changed color and linewidth
+plt.setp(box['caps'], color='grey', linewidth=1) 
+plt.setp(box['medians'], color='darkred', linewidth=3)  # Changed color and linewidth
+plt.setp(box['fliers'], marker='s', color='purple', alpha=0.7)  # Changed marker type
+
+plt.grid(axis='y', linestyle=':', alpha=0.5)  # Changed grid axis and style
+
+plt.tight_layout()
+
+plt.show()

@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+
+categories = ['Science Fiction', 'Fantasy', 'Mystery', 'Fiction', 'Biographies', 'Non-Fiction']
+distribution = [30, 20, 15, 15, 10, 10]
+colors = ['#99FF99', '#FFD700', '#FFB6C1', '#FF9999', '#DA70D6', '#66B2FF']
+
+fig, ax = plt.subplots(figsize=(10, 7))
+
+wedges, texts, autotexts = ax.pie(
+    distribution, 
+    labels=categories, 
+    colors=colors,
+    autopct='%1.1f%%', 
+    startangle=90,
+    explode=(0, 0.1, 0, 0.05, 0.1, 0),
+    wedgeprops=dict(width=0.3)
+)
+
+for text in texts:
+    text.set_fontsize(14)
+
+for autotext in autotexts:
+    autotext.set_color('blue')
+    autotext.set_fontsize(12)
+
+ax.grid(which='both', linestyle='--', linewidth=0.5)
+ax.set_title('Literary Genres in our New Collection', fontsize=18, style='italic', pad=15)
+ax.legend(wedges, categories, loc='upper right', bbox_to_anchor=(0.9, 1), title="Genres")
+
+plt.tight_layout()
+plt.show()
