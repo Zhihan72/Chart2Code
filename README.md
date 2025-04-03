@@ -1,7 +1,5 @@
 This repository releases the official data and code for the paper "Enhancing Chart-to-Code Generation in Multimodal Large Language Models via Iterative Dual Preference Learning". More details of our project are on the way.
 
-This repository is used for double-blind reviewing process. ANYONE is NOT allowed to distribute our data and code at ANYTIME during the reviewing process. 
-
 # About Chart2Code
 
 Chart-to-code generation—the process of converting chart images into executable plotting scripts—provides a lossless representation of chart information, requiring models to accurately capture and summarize all visual and structural elements. However, this remains a significant challenge for multimodal large language models (MLLMs), which are not inherently well-aligned with code generation tasks.
