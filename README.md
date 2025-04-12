@@ -1,4 +1,4 @@
-This repository releases the official data and code for the paper "Enhancing Chart-to-Code Generation in Multimodal Large Language Models via Iterative Dual Preference Learning". More details of our project are on the way.
+This repository releases the official data and code for the under-review paper addressing chart-to-code generation via iterative preference learning and dual rewarding mechanism. More details of our project are on the way.
 
 # About Chart2Code
 
